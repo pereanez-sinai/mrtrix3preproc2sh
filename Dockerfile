@@ -42,6 +42,9 @@ RUN cd mrtrix3 && ./configure -nogui && ./build
 ## manually add to path
 ENV PATH=$PATH:/mrtrix3/bin
 
+# install Tree
+RUN apt -y install tree
+
 ## make it work under singularity 
 # RUN ldconfig && mkdir -p /N/u /N/home /N/dc2 /N/soft /mnt/scratch
 
