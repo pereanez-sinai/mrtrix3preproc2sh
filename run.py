@@ -237,8 +237,11 @@ with open('./output/stdout.txt', 'w') as stdout, open('./output/stderr.txt', 'w'
     proc_cmds.append(f'tree {work_dir};')
     proc_cmds.append(f'tree {output_dir};')
 
+    bvecs = os.path.join(output_dir, 'bvecs')
+    bvals = os.path.join(output_dir, 'bvals')
+
     proc_cmds.append(
-        f'dwifslpreproc {catname} {dwipreproc_output} -rpe_header -force {se_epi_str} -nocleanup -scratch {work_dir} -debug -topup_options " --verbose " -eddy_options " {eddy_speed_params} " 1> ./output/stdout.txt 2> ./output/stderr.txt')
+        f'dwifslpreproc {catname} {dwipreproc_output} -rpe_header -force {se_epi_str} -export_grad_fsl {bvecs} {bvals} -scratch {work_dir} -debug -topup_options " --verbose " -eddy_options " {eddy_speed_params} " 1> ./output/stdout.txt 2> ./output/stderr.txt')
     # -eddyqc_all {output_dir}
     # timing
     proc_cmds.append('time=$((SECONDS-start)); echo dwifslpreproc time: $time sec.')
@@ -268,21 +271,21 @@ with open('./output/stdout.txt', 'w') as stdout, open('./output/stderr.txt', 'w'
     # proc_cmds.append(f'rm {output_dir}/*.mif')
     # proc_cmds.append(f'rm {output_dir}/*.nii')
 
-    proc_cmds.append(f'echo Before bvals and bvecs are copied')
+    # proc_cmds.append(f'echo Before bvals and bvecs are copied')
 
-    proc_cmds.append(f'tree {work_dir};')
-    proc_cmds.append(f'tree {output_dir};')
+    # proc_cmds.append(f'tree {work_dir};')
+    # proc_cmds.append(f'tree {output_dir};')
 
-    proc_cmds.append(f'find {work_dir} -iname \'bvals*\';')
-    proc_cmds.append(f'find {work_dir} -iname \'bvecs*\';')
+    # proc_cmds.append(f'find {work_dir} -iname \'bvals*\';')
+    # proc_cmds.append(f'find {work_dir} -iname \'bvecs*\';')
 
-    proc_cmds.append(f'mv `find {work_dir} -iname \'bvals*\'`  {output_dir};')
-    proc_cmds.append(f'mv `find {work_dir} -iname \'bvecs*\'`  {output_dir};')
+    # proc_cmds.append(f'mv `find {work_dir} -iname \'bvals*\'`  {output_dir};')
+    # proc_cmds.append(f'mv `find {work_dir} -iname \'bvecs*\'`  {output_dir};')
 
-    proc_cmds.append(f'echo After bvals and bvecs are copied')
+    # proc_cmds.append(f'echo Check for bvals and bvecs export')
 
-    proc_cmds.append(f'tree {work_dir};')
-    proc_cmds.append(f'tree {output_dir};')
+    # proc_cmds.append(f'tree {work_dir};')
+    # proc_cmds.append(f'tree {output_dir};')
 
     # proc_cmds.append(f'tar -zcvf {output_dir}/QC.tar.gz ./QC')
     # proc_cmds.append(f'tar -zcvf {output_dir}/scratch.tar.gz {work_dir}/scratch')

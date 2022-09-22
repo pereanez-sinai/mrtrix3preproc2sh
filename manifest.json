@@ -9,9 +9,9 @@
   "source": "https://github.com/pereanez-sinai/mrtrix3preproc2sh",
   "license": "Other",
   "cite": "Gear adapted from https://github.com/scitran-apps/mrtrix3preproc.",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "custom": {
-    "docker-image": "pereanez/mrtrix3preproc2sh:0.2.9",
+    "docker-image": "pereanez/mrtrix3preproc2sh:0.3.0",
     "flywheel": {
       "suite": "MRtrix3"
     }
@@ -19,7 +19,7 @@
   "custom": {
     "gear-builder": {
       "category": "analysis",
-      "image": "pereanez/mrtrix3preproc2sh:0.2.9"
+      "image": "pereanez/mrtrix3preproc2sh:0.3.0"
     }
   },
   "inputs": {
