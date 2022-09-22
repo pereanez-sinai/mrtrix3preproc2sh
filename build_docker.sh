@@ -1,5 +1,5 @@
 #!/bin/bash
 ## version
-tag=0.2.9
+tag=0.3.0
 
 docker build --progress plain -t pereanez/mrtrix3preproc2sh:$tag ./
